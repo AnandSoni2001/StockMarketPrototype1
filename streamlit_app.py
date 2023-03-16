@@ -77,7 +77,7 @@ with option1:
         
         fig = go.Figure()
         if(ag1):
-            fig.add_trace(go.Scatter(y=tcsdaily['close'], name='Closing', line=dict(color='blue')))
+            fig.add_trace(go.Scatter(y=tcsdaily['close'], name='Closing'))
         if(ag2):
             fig.add_trace(go.Scatter(y=tcsdaily['open'], name = 'Opening', line=dict(color='yellow')))
         if(ag3):
