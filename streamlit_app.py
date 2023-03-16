@@ -72,7 +72,7 @@ with cl4:
             
 with option1:
     if comp == 'Tata Consultancy Services':
-        fig = px.line(tcsdaily, y='close',markers=False, title='Tata Consultancy Services Daily Data from Jan 2019')
+        fig = px.line(tcsdaily, y='close',markers=False, title='Tata Consultancy Services daily data')
         st.plotly_chart(fig, use_container_width=True)
         
         fig = go.Figure()
@@ -88,7 +88,7 @@ with option1:
         st.plotly_chart(fig, use_container_width=True, title='Comparing other relevant parameters')
 
     if comp == 'Infosys':
-        fig = px.line(infdaily, y='close',markers=False, title='Infosys Daily Data from Jan 2019')
+        fig = px.line(infdaily, y='close',markers=False, title='Infosys daily data')
         st.plotly_chart(fig, use_container_width=True)
 
         fig = go.Figure()   
@@ -104,7 +104,7 @@ with option1:
         st.plotly_chart(fig, use_container_width=True)
 
     if comp == 'Reliance Industries':
-        fig = px.line(reldaily, y='close',markers=False, title='Reliance Industries Daily Data from Jan 2019')
+        fig = px.line(reldaily, y='close',markers=False, title='Reliance Industries daily data')
         st.plotly_chart(fig, use_container_width=True)
 
         fig = go.Figure()
@@ -121,7 +121,7 @@ with option1:
 
 with option2:
     if comp == 'Tata Consultancy Services':
-        fig = px.line(tcsmonthly,y='close', markers=False, title='Tata Consultancy Services Monthly Data from 2004')
+        fig = px.line(tcsmonthly,y='close', markers=False, title='Tata Consultancy Services monthly data')
         st.plotly_chart(fig, use_container_width=True)
 
         fig = go.Figure()
@@ -137,7 +137,7 @@ with option2:
         st.plotly_chart(fig, use_container_width=True)
 
     if comp == 'Infosys':
-        fig = px.line(infmonthly, y='close',markers=False, title='Infosys Monthly Data from 2004')
+        fig = px.line(infmonthly, y='close',markers=False, title='Infosys monthly data')
         st.plotly_chart(fig, use_container_width=True)
 
         fig = go.Figure()
@@ -153,7 +153,7 @@ with option2:
         st.plotly_chart(fig, use_container_width=True)
 
     if comp == 'Reliance Industries':
-        fig = px.line(relmonthly, y='close',markers=False, title='Reliance Industries Monthly Data from 2004')
+        fig = px.line(relmonthly, y='close',markers=False, title='Reliance Industries monthly data')
         st.plotly_chart(fig, use_container_width=True)
 
         fig = go.Figure()
