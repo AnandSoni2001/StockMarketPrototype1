@@ -25,9 +25,9 @@ infmonthly= stock_info.get_data("INFY.NS", interval="1mo")
 infyearly = pd.read_csv('data/infosys-yearly.csv')
 
 #Select Box
-comp = st.selectbox('Select a Company from the below options :', ('Tata Consultancy Services', 'Reliance Industries', 'Infosys'))
+comp = st.selectbox('Select a Company from the below options :', ('Tata Consultancy Services - TCS', 'Reliance Industries - RELIANCE', 'Infosys - INFY'))
 
-if comp == 'Tata Consultancy Services':
+if comp == 'Tata Consultancy Services - TCS':
     col1, col2, col3, col4 = st.columns(4)
     x = round(stock_info.get_live_price("TCS.NS"),2)
     y = round(tcsdaily['close'].iloc[-2],2)
@@ -37,7 +37,7 @@ if comp == 'Tata Consultancy Services':
     col4.metric(label='Previous Close', value=y)
 
 
-if comp == 'Reliance Industries':
+if comp == 'Reliance Industries - RELIANCE':
     col1, col2, col3, col4 = st.columns(4)
     x = round(stock_info.get_live_price("RELIANCE.NS"),2)
     y = round(reldaily['close'].iloc[-2],2)
@@ -46,7 +46,7 @@ if comp == 'Reliance Industries':
     col3.metric(label="52 Week High", value=round(reldaily['high'].tail(261).max(),2))
     col4.metric(label='Previous Close', value=y)
 
-if comp == 'Infosys':
+if comp == 'Infosys - INFY':
     col1, col2, col3, col4 = st.columns(4)
     x = round(stock_info.get_live_price("INFY.NS"),2)
     y = round(infdaily['close'].iloc[-2],2)
@@ -71,7 +71,7 @@ with cl4:
     ag4 = st.checkbox('Low', value='True')
             
 with option1:
-    if comp == 'Tata Consultancy Services':
+    if comp == 'Tata Consultancy Services - TCS':
         fig = px.line(tcsdaily, y='close',markers=False, title='Tata Consultancy Services daily data')
         st.plotly_chart(fig, use_container_width=True)
         
@@ -87,7 +87,7 @@ with option1:
         fig.update_layout(xaxis_title='Date', yaxis_title='Price', title='Comparing other relevant parameters along close')
         st.plotly_chart(fig, use_container_width=True, title='Comparing other relevant parameters')
 
-    if comp == 'Infosys':
+    if comp == 'Infosys - INFY':
         fig = px.line(infdaily, y='close',markers=False, title='Infosys daily data')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -103,7 +103,7 @@ with option1:
         fig.update_layout(xaxis_title='Date', yaxis_title='Price', title='Comparing other relevant parameters')
         st.plotly_chart(fig, use_container_width=True)
 
-    if comp == 'Reliance Industries':
+    if comp == 'Reliance Industries - RELIANCE':
         fig = px.line(reldaily, y='close',markers=False, title='Reliance Industries daily data')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -120,7 +120,7 @@ with option1:
         st.plotly_chart(fig, use_container_width=True)
 
 with option2:
-    if comp == 'Tata Consultancy Services':
+    if comp == 'Tata Consultancy Services - TCS':
         fig = px.line(tcsmonthly,y='close', markers=False, title='Tata Consultancy Services monthly data')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -136,7 +136,7 @@ with option2:
         fig.update_layout(xaxis_title='Month', yaxis_title='Price', title='Comparing other relevant parameters')
         st.plotly_chart(fig, use_container_width=True)
 
-    if comp == 'Infosys':
+    if comp == 'Infosys - INFY':
         fig = px.line(infmonthly, y='close',markers=False, title='Infosys monthly data')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -152,7 +152,7 @@ with option2:
         fig.update_layout(xaxis_title='Month', yaxis_title='Price', title='Comparing other relevant parameters')
         st.plotly_chart(fig, use_container_width=True)
 
-    if comp == 'Reliance Industries':
+    if comp == 'Reliance Industries - RELIANCE':
         fig = px.line(relmonthly, y='close',markers=False, title='Reliance Industries monthly data')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -169,7 +169,7 @@ with option2:
         st.plotly_chart(fig, use_container_width=True)
 
 with option3:
-    if comp == 'Tata Consultancy Services':
+    if comp == 'Tata Consultancy Services - TCS':
         fig = px.line(tcsyearly, x='Year', y='Close Price',markers=False, title='Tata Consultancy Services Yearly Data from 2004')
         st.plotly_chart(fig, use_container_width=True)
         
@@ -185,7 +185,7 @@ with option3:
         fig.update_layout(xaxis_title='Year', yaxis_title='Price', title='Comparing other relevant parameters along close price')
         st.plotly_chart(fig, use_container_width=True, title='Comparing other relevant parameters')
 
-    if comp == 'Infosys':
+    if comp == 'Infosys - INFY':
         fig = px.line(infyearly, x='Year', y='Close Price',markers=True, title='Infosys Yearly Data from 2004')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -201,7 +201,7 @@ with option3:
         fig.update_layout(xaxis_title='Year', yaxis_title='Price', title='Comparing other relevant parameters')
         st.plotly_chart(fig, use_container_width=True)
 
-    if comp == 'Reliance Industries':
+    if comp == 'Reliance Industries - RELIANCE':
         fig = px.line(relyearly, x='Year', y='Close Price',markers=True, title='Reliance Industries Yearly Data from 2004')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -227,17 +227,17 @@ y=['2018', '2019', '2020', '2021', '2022']
 
 with a1:
     st.caption('All values in Crs')
-    if comp == 'Infosys':
+    if comp == 'Infosys - INFY':
         chart_data = pd.DataFrame([[70522,16029], [82675,15404], [90791,16594], [100472,19351], [121641,22110]],
         index=y, columns=["Revenue", "Profit"])
         st.bar_chart(chart_data, height=350)
 
-    if comp == 'Tata Consultancy Services':
+    if comp == 'Tata Consultancy Services - TCS':
         chart_data = pd.DataFrame([[123104,25826], [146463,31472], [156949,32430], [164177,32430], [191754,38327]],
         index=y, columns=["Revenue", "Profit"])
         st.bar_chart(chart_data, height=350)
 
-    if comp == 'Reliance Industries':
+    if comp == 'Reliance Industries - RELIANCE':
         chart_data = pd.DataFrame([[408265,36075], [583094,39588], [611645,39354], [486326,49128], [721634,60705]],
         index=y, columns=["Revenue", "Profit"])
         st.bar_chart(chart_data, height=350)
@@ -245,30 +245,30 @@ with a1:
     
 with a2:
     st.caption('All values in Crs')
-    if comp == 'Infosys':
+    if comp == 'Infosys - INFY':
         chart_data = pd.DataFrame([64923, 64948, 65450, 76351, 75350], index=y, columns=['Net Worth'])
         st.bar_chart(chart_data, height=350)
 
-    if comp == 'Tata Consultancy Services':
+    if comp == 'Tata Consultancy Services - TCS':
         chart_data = pd.DataFrame([85128, 89446, 84126, 86433, 89139], index=y, columns=['Net Worth'])
         st.bar_chart(chart_data, height=350)
 
-    if comp == 'Reliance Industries':
+    if comp == 'Reliance Industries - RELIANCE':
         chart_data = pd.DataFrame([293506, 387112, 453331, 700172, 779485], index=y, columns=['Net Worth'])
         st.bar_chart(chart_data, height=350)
 
 with a3:
-    if comp == 'Infosys':
+    if comp == 'Infosys - INFY':
         x = [15.11, 17.71, 18.22, 36.28, 12.68]
         fig = px.pie(values=x, names=tier)
         st.plotly_chart(fig, use_container_width=True, height=350)
 
-    if comp == 'Tata Consultancy Services':
+    if comp == 'Tata Consultancy Services - TCS':
         x = [72.30, 3.31, 5.96, 12.94, 5.49]
         fig = px.pie(values=x, names=tier)
         st.plotly_chart(fig, use_container_width=True, height=350)
 
-    if comp == 'Reliance Industries':
+    if comp == 'Reliance Industries - RELIANCE':
         x = [50.49, 5.81, 11.64, 23.43, 8.63]
         fig = px.pie(values=x, names=tier)
         st.plotly_chart(fig, use_container_width=True, height=350)
