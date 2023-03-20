@@ -258,6 +258,7 @@ with a2:
         st.bar_chart(chart_data, height=350)
 
 with a3:
+    st.caption('As of March, 2023')
     if comp == 'Infosys - INFY':
         x = [15.11, 17.71, 18.22, 36.28, 12.68]
         fig = px.pie(values=x, names=tier)
