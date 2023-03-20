@@ -249,7 +249,7 @@ with a2:
         chart_data = pd.DataFrame([64923, 64948, 65450, 76351, 75350], index=y, columns=['Net Worth'])
         st.bar_chart(chart_data, height=350)
         
-        fig = px.line(relyearly, x=[64923, 64948, 65450, 76351, 75350], y=y,markers=True, title='Networth')
+        fig = px.line(y=[64923, 64948, 65450, 76351, 75350], x=y, markers=True, title='Networth')
         st.plotly_chart(fig, use_container_width=True)
         
 
