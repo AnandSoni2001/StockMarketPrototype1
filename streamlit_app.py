@@ -246,17 +246,9 @@ with a1:
 with a2:
     st.caption('All values in Crs')
     if comp == 'Infosys - INFY':
-        #chart_data = pd.DataFrame([64923, 64948, 65450, 76351, 75350], index=y, columns=['Net Worth'])
-        #st.bar_chart(chart_data, height=350)
-        
-        #fig = px.line(y=[64923, 64948, 65450, 76351, 75350], x=y, markers=True, title='Networth')
-        #st.plotly_chart(fig, use_container_width=True)
-        fig = go.Figure()
-        fig.add_bar(x=y, y=[64923, 64948, 65450, 76351, 75350])
-        fig.update_layout(xaxis_title='Year', yaxis_title='Net Worth')
-        st.plotly_chart(fig, use_container_width=True)
-        
-
+        chart_data = pd.DataFrame([64923, 64948, 65450, 76351, 75350], index=y, columns=['Net Worth'])
+        st.bar_chart(chart_data, height=350)
+         
     if comp == 'Tata Consultancy Services - TCS':
         chart_data = pd.DataFrame([85128, 89446, 84126, 86433, 89139], index=y, columns=['Net Worth'])
         st.bar_chart(chart_data, height=350)
@@ -281,4 +273,4 @@ with a3:
         fig = px.pie(values=x, names=tier)
         st.plotly_chart(fig, use_container_width=True, height=350)
 
-st.caption('This webapp was made by Anand Soni and Deepak Rathore.')
+st.caption('The Web Application was made by Anand Soni and Deepak Rathore.')
