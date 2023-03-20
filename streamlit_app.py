@@ -251,8 +251,7 @@ with a2:
         
         #fig = px.line(y=[64923, 64948, 65450, 76351, 75350], x=y, markers=True, title='Networth')
         #st.plotly_chart(fig, use_container_width=True)
-        
-        fig = px.line(x=y, y=[64923, 64948, 65450, 76351, 75350])
+        fig = go.Figure()
         fig.add_bar(x=y, y=[64923, 64948, 65450, 76351, 75350])
         fig.update_layout(xaxis_title='Year', yaxis_title='Net Worth')
         st.plotly_chart(fig, use_container_width=True)
