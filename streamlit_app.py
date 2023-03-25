@@ -76,7 +76,7 @@ with option1:
     
     if comp == 'Tata Consultancy Services - TCS':
         if opt=='All Time' :
-            fig = px.line(tcsdaily, y='close',markers=False, title='Tata Consultancy Services daily data of all time'')  
+            fig = px.line(tcsdaily, y='close',markers=False, title='Tata Consultancy Services daily data of all time')  
         if opt=='1 Week' :
             fig = px.line(tcsdaily.tail(5), y='close',markers=False, title='Tata Consultancy Services daily data of 1 week')   
         if opt=='1 Month' :
@@ -99,7 +99,7 @@ with option1:
 
     if comp == 'Infosys - INFY':
         if opt=='All Time' :
-            fig = px.line(infdaily, y='close',markers=False, title='Infosys daily data of all time'')  
+            fig = px.line(infdaily, y='close',markers=False, title='Infosys daily data of all time')  
         if opt=='1 Week' :
             fig = px.line(infdaily.tail(5), y='close',markers=False, title='Infosys daily data of 1 week')   
         if opt=='1 Month' :
@@ -121,7 +121,6 @@ with option1:
         st.plotly_chart(fig, use_container_width=True)
 
     if comp == 'Reliance Industries - RELIANCE':
-        fig = px.line(reldaily, y='close',markers=False, title='Reliance Industries daily data')
         if opt=='All Time' :
             fig = px.line(reldaily, y='close',markers=False, title='Reliance Industries daily data of all time')  
         if opt=='1 Week' :
