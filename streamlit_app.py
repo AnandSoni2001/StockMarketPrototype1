@@ -71,51 +71,76 @@ with cl4:
     ag4 = st.checkbox('Low', value='True')
             
 with option1:
+    opt = st.radio("Select timelength :", ('All Time', '1 Week', '1 Month', '1 Year'))
+    st.write('<style>div.row-widget.stRadio > div{flex-direction:row;}</style>', unsafe_allow_html=True)
+    
     if comp == 'Tata Consultancy Services - TCS':
-        fig = px.line(tcsdaily, y='close',markers=False, title='Tata Consultancy Services daily data')
+        if opt=='All Time' :
+            fig = px.line(tcsdaily, y='close',markers=False, title='Tata Consultancy Services daily data of all time'')  
+        if opt=='1 Week' :
+            fig = px.line(tcsdaily.tail(5), y='close',markers=False, title='Tata Consultancy Services daily data of 1 week')   
+        if opt=='1 Month' :
+            fig = px.line(tcsdaily.tail(20), y='close',markers=False, title='Tata Consultancy Services daily data of 1 month')     
+        if opt=='1 Year' :
+            fig = px.line(tcsdaily.tail(251), y='close',markers=False, title='Tata Consultancy Services daily data of 1 year') 
         st.plotly_chart(fig, use_container_width=True)
         
         fig = go.Figure()
         if(ag1):
-            fig.add_trace(go.Scatter(y=tcsdaily['close'], name='Closing'))
+            fig.add_trace(go.Scatter(x=tcsdaily.index,y=tcsdaily['close'], name='Closing'))
         if(ag2):
-            fig.add_trace(go.Scatter(y=tcsdaily['open'], name = 'Opening', line=dict(color='yellow')))
+            fig.add_trace(go.Scatter(x=tcsdaily.index,y=tcsdaily['open'], name = 'Opening', line=dict(color='yellow')))
         if(ag3):
-            fig.add_trace(go.Scatter(y=tcsdaily['high'], name = 'High', line=dict(color='green')))
+            fig.add_trace(go.Scatter(x=tcsdaily.index,y=tcsdaily['high'], name = 'High', line=dict(color='green')))
         if(ag4):
-            fig.add_trace(go.Scatter(y=tcsdaily['low'], name = 'Low', line=dict(color='red')))
+            fig.add_trace(go.Scatter(x=tcsdaily.index,y=tcsdaily['low'], name = 'Low', line=dict(color='red')))
         fig.update_layout(xaxis_title='Date', yaxis_title='Price', title='Comparing other relevant parameters along close')
         st.plotly_chart(fig, use_container_width=True, title='Comparing other relevant parameters')
 
     if comp == 'Infosys - INFY':
-        fig = px.line(infdaily, y='close',markers=False, title='Infosys daily data')
+        if opt=='All Time' :
+            fig = px.line(infdaily, y='close',markers=False, title='Infosys daily data of all time'')  
+        if opt=='1 Week' :
+            fig = px.line(infdaily.tail(5), y='close',markers=False, title='Infosys daily data of 1 week')   
+        if opt=='1 Month' :
+            fig = px.line(infdaily.tail(20), y='close',markers=False, title='Infosys daily data of 1 month')     
+        if opt=='1 Year' :
+            fig = px.line(infdaily.tail(251), y='close',markers=False, title='Infosys daily data of 1 year') 
         st.plotly_chart(fig, use_container_width=True)
 
         fig = go.Figure()   
         if(ag1):
-            fig.add_trace(go.Scatter(y=infdaily['close'], name='Closing', line=dict(color='blue')))
+            fig.add_trace(go.Scatter(x=infdaily.index, y=infdaily['close'], name='Closing', line=dict(color='blue')))
         if(ag2):
-            fig.add_trace(go.Scatter(y=infdaily['open'], name = 'Opening', line=dict(color='yellow')))
+            fig.add_trace(go.Scatter(x=infdaily.index,y=infdaily['open'], name = 'Opening', line=dict(color='yellow')))
         if(ag3):
-            fig.add_trace(go.Scatter(y=infdaily['high'], name = 'High', line=dict(color='green')))
+            fig.add_trace(go.Scatter(x=infdaily.index,y=infdaily['high'], name = 'High', line=dict(color='green')))
         if(ag4):
-            fig.add_trace(go.Scatter(y=infdaily['low'], name = 'Low', line=dict(color='red')))
+            fig.add_trace(go.Scatter(x=infdaily.index,y=infdaily['low'], name = 'Low', line=dict(color='red')))
         fig.update_layout(xaxis_title='Date', yaxis_title='Price', title='Comparing other relevant parameters')
         st.plotly_chart(fig, use_container_width=True)
 
     if comp == 'Reliance Industries - RELIANCE':
         fig = px.line(reldaily, y='close',markers=False, title='Reliance Industries daily data')
+        if opt=='All Time' :
+            fig = px.line(reldaily, y='close',markers=False, title='Reliance Industries daily data of all time')  
+        if opt=='1 Week' :
+            fig = px.line(reldaily.tail(5), y='close',markers=False, title='Reliance Industries daily data of 1 week')   
+        if opt=='1 Month' :
+            fig = px.line(reldaily.tail(20), y='close',markers=False, title='Reliance Industries daily data of 1 month')     
+        if opt=='1 Year' :
+            fig = px.line(reldaily.tail(251), y='close',markers=False, title='Reliance Industries daily data of 1 year') 
         st.plotly_chart(fig, use_container_width=True)
 
         fig = go.Figure()
         if(ag1):
-            fig.add_trace(go.Scatter(y=reldaily['close'], name='Closing', line=dict(color='blue')))
+            fig.add_trace(go.Scatter(x=reldaily.index, y=reldaily['close'], name='Closing', line=dict(color='blue')))
         if(ag2):
-            fig.add_trace(go.Scatter(y=reldaily['open'], name = 'Opening', line=dict(color='yellow')))
+            fig.add_trace(go.Scatter(x=reldaily.index,y=reldaily['open'], name = 'Opening', line=dict(color='yellow')))
         if(ag3):
-            fig.add_trace(go.Scatter(y=reldaily['high'], name = 'High', line=dict(color='green')))
+            fig.add_trace(go.Scatter(x=reldaily.index,y=reldaily['high'], name = 'High', line=dict(color='green')))
         if(ag4):
-            fig.add_trace(go.Scatter(y=reldaily['low'], name = 'Low', line=dict(color='red')))
+            fig.add_trace(go.Scatter(x=reldaily.index,y=reldaily['low'], name = 'Low', line=dict(color='red')))
         fig.update_layout(xaxis_title='Date', yaxis_title='Price', title='Comparing other relevant parameters along close')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -126,13 +151,13 @@ with option2:
 
         fig = go.Figure()
         if(ag1):
-            fig.add_trace(go.Scatter(y=tcsmonthly['close'], name='Closing', line=dict(color='blue')))
+            fig.add_trace(go.Scatter(x=tcsmonthly.index,y=tcsmonthly['close'], name='Closing', line=dict(color='blue')))
         if(ag2):
-            fig.add_trace(go.Scatter(y=tcsmonthly['open'], name = 'Opening', line=dict(color='yellow')))
+            fig.add_trace(go.Scatter(x=tcsmonthly.index,y=tcsmonthly['open'], name = 'Opening', line=dict(color='yellow')))
         if(ag3):
-            fig.add_trace(go.Scatter(y=tcsmonthly['high'], name = 'High', line=dict(color='green')))
+            fig.add_trace(go.Scatter(x=tcsmonthly.index,y=tcsmonthly['high'], name = 'High', line=dict(color='green')))
         if(ag4):
-            fig.add_trace(go.Scatter(y=tcsmonthly['low'], name = 'Low', line=dict(color='red')))
+            fig.add_trace(go.Scatter(x=tcsmonthly.index,y=tcsmonthly['low'], name = 'Low', line=dict(color='red')))
         fig.update_layout(xaxis_title='Month', yaxis_title='Price', title='Comparing other relevant parameters')
         st.plotly_chart(fig, use_container_width=True)
 
@@ -142,11 +167,11 @@ with option2:
 
         fig = go.Figure()
         if(ag1):
-            fig.add_trace(go.Scatter(y=infmonthly['close'], name='Closing', line=dict(color='blue')))
+            fig.add_trace(go.Scatter(x=infmonthly.index, y=infmonthly['close'], name='Closing', line=dict(color='blue')))
         if(ag2):
-            fig.add_trace(go.Scatter(y=infmonthly['open'], name = 'Opening', line=dict(color='yellow')))
+            fig.add_trace(go.Scatter(x=infmonthly.index,y=infmonthly['open'], name = 'Opening', line=dict(color='yellow')))
         if(ag3):
-            fig.add_trace(go.Scatter(y=infmonthly['high'], name = 'High', line=dict(color='green')))
+            fig.add_trace(go.Scatter(x=infmonthly.index,y=infmonthly['high'], name = 'High', line=dict(color='green')))
         if(ag4):
             fig.add_trace(go.Scatter(y=infmonthly['low'], name = 'Low', line=dict(color='red')))
         fig.update_layout(xaxis_title='Month', yaxis_title='Price', title='Comparing other relevant parameters')
@@ -158,13 +183,13 @@ with option2:
 
         fig = go.Figure()
         if(ag1):
-            fig.add_trace(go.Scatter(y=relmonthly['close'], name='Closing', line=dict(color='blue')))
+            fig.add_trace(go.Scatter(x=relmonthly.index,y=relmonthly['close'], name='Closing', line=dict(color='blue')))
         if(ag2):
-            fig.add_trace(go.Scatter(y=relmonthly['open'], name = 'Opening', line=dict(color='yellow')))
+            fig.add_trace(go.Scatter(x=relmonthly.index,y=relmonthly['open'], name = 'Opening', line=dict(color='yellow')))
         if(ag3):
-            fig.add_trace(go.Scatter(y=relmonthly['high'], name = 'High', line=dict(color='green')))
+            fig.add_trace(go.Scatter(x=relmonthly.index,y=relmonthly['high'], name = 'High', line=dict(color='green')))
         if(ag4):
-            fig.add_trace(go.Scatter(y=relmonthly['low'], name = 'Low', line=dict(color='red')))
+            fig.add_trace(go.Scatter(x=relmonthly.index,y=relmonthly['low'], name = 'Low', line=dict(color='red')))
         fig.update_layout(xaxis_title='Month', yaxis_title='Price', title='Comparing other relevant parameters')
         st.plotly_chart(fig, use_container_width=True)
 
