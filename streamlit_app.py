@@ -3,7 +3,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 import plotly.express as px
-from yahoo_fin import stock_info
+from yahoo_fin.stock_info import *
 
 #Heading
 st.title('Research Project on Stock Market Analysis and Prediction')
@@ -31,29 +31,50 @@ if comp == 'Tata Consultancy Services - TCS':
     col1, col2, col3, col4 = st.columns(4)
     x = round(stock_info.get_live_price("TCS.NS"),2)
     y = round(tcsdaily['close'].iloc[-2],2)
+    tcs = get_stats('TCS.NS')['Value']
     col1.metric(label="Market Price", value=x, delta = round(x-y,2))
-    col2.metric(label="52 Week Low", value=round(tcsdaily['low'].tail(261).min(),2))
-    col3.metric(label="52 Week High", value=round(tcsdaily['high'].tail(261).max(),2))
-    col4.metric(label='Previous Close', value=y)
+    col2.metric(label="52 Week High", value=tcs[3])
+    col3.metric(label="52 Week Low", value=tcs[4])
+    col4.metric(label="Return on Equity", value=tcs[34])
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric(label='Previous Close', value=y)
+    col2.metric(label="Book Value Per Share", value=tcs[48])
+    col3.metric(label='Earning Per Share', value=tcs[41])
+    col4.metric(label="Dividend Yield", value=tcs[22])
 
 
 if comp == 'Reliance Industries - RELIANCE':
     col1, col2, col3, col4 = st.columns(4)
     x = round(stock_info.get_live_price("RELIANCE.NS"),2)
     y = round(reldaily['close'].iloc[-2],2)
+    rel = get_stats('RELIANCE.NS')['Value']
     col1.metric(label="Market Price", value=x, delta = round(x-y,2))
-    col2.metric(label="52 Week Low", value=round(reldaily['low'].tail(261).min(),2))
-    col3.metric(label="52 Week High", value=round(reldaily['high'].tail(261).max(),2))
-    col4.metric(label='Previous Close', value=y)
+    col2.metric(label="52 Week High", value=rel[3])
+    col3.metric(label="52 Week Low", value=rel[4])
+    col4.metric(label="Return on Equity", value='8.21%')
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric(label='Previous Close', value=y)
+    col2.metric(label="Book Value Per Share", value=1202.45)
+    col3.metric(label='Earning Per Share', value=93.96)
+    col4.metric(label="Dividend Yield", value='0.36%')
 
 if comp == 'Infosys - INFY':
     col1, col2, col3, col4 = st.columns(4)
     x = round(stock_info.get_live_price("INFY.NS"),2)
     y = round(infdaily['close'].iloc[-2],2)
+    inf = get_stats('INFY.NS')['Value']
     col1.metric(label="Market Price", value=x, delta = round(x-y,2))
-    col2.metric(label="52 Week Low", value=round(infdaily['low'].tail(261).min(),2))
-    col3.metric(label="52 Week High", value=round(infdaily['high'].tail(261).max(),2))
-    col4.metric(label='Previous Close', value=y)
+    col2.metric(label="52 Week High", value=inf[3])
+    col3.metric(label="52 Week Low", value=inf[4])
+    col4.metric(label="Return on Equity", value=inf[34])
+
+    col1, col2, col3, col4 = st.columns(4)
+    col1.metric(label='Previous Close', value=y)
+    col2.metric(label="Book Value Per Share", value=inf[48])
+    col3.metric(label='Earning Per Share', value=inf[41])
+    col4.metric(label="Dividend Yield", value=inf[22])
 
 #Tab for Hist Data
 st.write("#")
