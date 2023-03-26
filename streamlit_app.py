@@ -222,11 +222,11 @@ with option3:
         fig = go.Figure()
         if(ag1):
             fig.add_trace(go.Scatter(x=tcsyearly['Year'], y=tcsyearly['Close Price'], name='Closing', line=dict(color='blue')))
-        if(ag1):
+        if(ag2):
             fig.add_trace(go.Scatter(x=tcsyearly['Year'], y=tcsyearly['Open Price'], name = 'Opening', line=dict(color='yellow')))
-        if(ag1):
+        if(ag3):
             fig.add_trace(go.Scatter(x=tcsyearly['Year'], y=tcsyearly['High Price'], name = 'High', line=dict(color='green')))
-        if(ag1):
+        if(ag4):
             fig.add_trace(go.Scatter(x=tcsyearly['Year'], y=tcsyearly['Low Price'], name = 'Low', line=dict(color='red')))
         fig.update_layout(xaxis_title='Year', yaxis_title='Price', title='Comparing other relevant parameters along close price')
         st.plotly_chart(fig, use_container_width=True, title='Comparing other relevant parameters')
