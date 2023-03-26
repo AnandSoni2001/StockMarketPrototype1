@@ -3,6 +3,7 @@ import streamlit as st
 import plotly.graph_objects as go
 import pandas as pd
 import plotly.express as px
+from yahoo_fin import stock_info
 from yahoo_fin.stock_info import *
 
 #Heading
