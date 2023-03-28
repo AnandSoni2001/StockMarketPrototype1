@@ -269,9 +269,9 @@ with option3:
 
 #Predictions
 st.write("#")
-st.subheader('Predict with our trained model : ')
+st.subheader('Predict : ')
 
-if st.button('Predict for Next Week'):
+if st.button('Click Here'):
     if comp == 'Tata Consultancy Services - TCS':
         x = round(stock_info.get_live_price("TCS.NS"),2)
         tcsweekly = stock_info.get_data("TCS.NS", interval="1wk")
@@ -389,5 +389,8 @@ with a3:
         x = [50.49, 5.81, 11.64, 23.43, 8.63]
         fig = px.pie(values=x, names=tier)
         st.plotly_chart(fig, use_container_width=True, height=350)
+
+title = st.text_input('Movie title', 'Life of Brian')
+st.write('The current movie title is', title)
 
 st.caption('The Web Application was made by Anand Soni and Deepak Rathore.')
