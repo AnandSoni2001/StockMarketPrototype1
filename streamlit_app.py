@@ -391,6 +391,7 @@ with a3:
         st.plotly_chart(fig, use_container_width=True, height=350)
 
 title = st.text_input('Enter your Name', '')
-st.write('Thank You ', title, ' ! Hope you liked our website')
+if title :
+    st.write('Thank You ', title, ' ! Hope you liked our website.')
 
 st.caption('The Web Application was made by Anand Soni and Deepak Rathore.')
