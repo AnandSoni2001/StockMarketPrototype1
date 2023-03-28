@@ -3,3 +3,4 @@ pandas==1.4.2
 plotly==5.13.1
 streamlit==1.17.0
 yahoo-fin==0.8.9.1
+joblib>=0.14
