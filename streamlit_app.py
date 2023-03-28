@@ -5,6 +5,10 @@ import pandas as pd
 import plotly.express as px
 from yahoo_fin import stock_info
 from yahoo_fin.stock_info import *
+import math
+import numpy as np
+from sklearn.preprocessing import MinMaxScaler 
+import joblib
 
 #Heading
 st.title('Research Project on Stock Market Analysis and Prediction')
@@ -319,5 +323,24 @@ with a3:
         x = [50.49, 5.81, 11.64, 23.43, 8.63]
         fig = px.pie(values=x, names=tier)
         st.plotly_chart(fig, use_container_width=True, height=350)
+        
+tcsweekly = stock_info.get_data("TCS.NS", interval="1wk")
+tcsweekly=tcsweekly.dropna()
+values = tcsweekly['close'].values
+data_len = math.ceil(len(values)*0.8) 
+scaler = MinMaxScaler(feature_range=(0,1))
+scaled_data = scaler.fit_transform(values.reshape(-1,1))
+test_data = scaled_data[data_len-60: , : ] #
+x_test = []
+for i in range(60, len(test_data)):
+    x_test.append(test_data[i-60:i, 0])
+x_test = np.array(x_test)
+x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+
+new = joblib.load('tcsweekly_1.pkl')
+ans = new.predict(x_test)
+ans1 = scaler.inverse_transform(ans)
+
+st.metric(label='Predicted', value=ans1[-1][0])
 
 st.caption('The Web Application was made by Anand Soni and Deepak Rathore.')
