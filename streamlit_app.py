@@ -274,7 +274,7 @@ st.subheader('Predict : ')
 if st.button('Click Here'):
     if comp == 'Tata Consultancy Services - TCS':
         x = round(stock_info.get_live_price("TCS.NS"),2)
-        tcsweekly = stock_info.get_data("TCS.NS", interval="1wk")
+        tcsweekly = stock_info.get_data("TCS.NS", interval="1d")
         tcsweekly=tcsweekly.dropna()
         values = tcsweekly['close'].values
         data_len = math.ceil(len(values)*0.8) 
@@ -286,7 +286,7 @@ if st.button('Click Here'):
             x_test.append(test_data[i-60:i, 0])
         x_test = np.array(x_test)
         x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-        new = joblib.load('tcsweekly_1.pkl')
+        new = joblib.load('tcsdail_1.pkl')
         ans = new.predict(x_test)
         ans1 = scaler.inverse_transform(ans)
         val = np.around(ans1[-1][0], decimals=2)
@@ -294,7 +294,7 @@ if st.button('Click Here'):
         
     if comp == 'Reliance Industries - RELIANCE':
         x = round(stock_info.get_live_price("RELIANCE.NS"),2)
-        relweekly = stock_info.get_data("RELIANCE.NS", interval="1wk")
+        relweekly = stock_info.get_data("RELIANCE.NS", interval="1d")
         relweekly=relweekly.dropna()
         values = relweekly['close'].values
         data_len = math.ceil(len(values)*0.8) 
@@ -306,7 +306,7 @@ if st.button('Click Here'):
             x_test.append(test_data[i-60:i, 0])
         x_test = np.array(x_test)
         x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-        new = joblib.load('relweekly_1.pkl')
+        new = joblib.load('reldail_1.pkl')
         ans = new.predict(x_test)
         ans1 = scaler.inverse_transform(ans)
         val = np.around(ans1[-1][0], decimals=2)
@@ -314,7 +314,7 @@ if st.button('Click Here'):
         
     if comp == 'Infosys - INFY':
         x = round(stock_info.get_live_price("INFY.NS"),2)
-        infweekly = stock_info.get_data("INFY.NS", interval="1wk")
+        infweekly = stock_info.get_data("INFY.NS", interval="1d")
         infweekly=infweekly.dropna()
         values = infweekly['close'].values
         data_len = math.ceil(len(values)*0.8) 
@@ -326,7 +326,7 @@ if st.button('Click Here'):
             x_test.append(test_data[i-60:i, 0])
         x_test = np.array(x_test)
         x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-        new = joblib.load('infweekly_1.pkl')
+        new = joblib.load('infdail_1.pkl')
         ans = new.predict(x_test)
         ans1 = scaler.inverse_transform(ans)
         val = np.around(ans1[-1][0], decimals=2)
