@@ -268,6 +268,8 @@ with option3:
         st.plotly_chart(fig, use_container_width=True)
 
 #Predictions
+st.write("#")
+st.subheader('Predict with our trained model : ')
 
 if st.button('Predict for Next Week'):
     if comp == 'Tata Consultancy Services - TCS':
