@@ -340,6 +340,7 @@ if st.button('Predict for Next Week'):
     new = joblib.load('tcsweekly_1.pkl')
     ans = new.predict(x_test)
     ans1 = scaler.inverse_transform(ans)
-    st.metric(label="Prediction", value= round(ans1[-1][0],2))
+    val = round(ans1[-1][0],2)
+    st.metric(label="Prediction", value=val)
 
 st.caption('The Web Application was made by Anand Soni and Deepak Rathore.')
