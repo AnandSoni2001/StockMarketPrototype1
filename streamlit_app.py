@@ -392,6 +392,6 @@ with a3:
 
 title = st.text_input('Enter your Name', '')
 if title :
-    st.write('Thank You ', title, ' ! Hope you liked our website.')
+    st.write('Thank You ', title, ' ! We hope you liked our website.')
 
 st.caption('The Web Application was made by Anand Soni and Deepak Rathore.')
