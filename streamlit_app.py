@@ -267,6 +267,70 @@ with option3:
         fig.update_layout(xaxis_title='Year', yaxis_title='Price', title='Comparing other relevant parameters')
         st.plotly_chart(fig, use_container_width=True)
 
+#Predictions
+
+if st.button('Predict for Next Week'):
+    if comp == 'Tata Consultancy Services - TCS':
+        x = round(stock_info.get_live_price("TCS.NS"),2)
+        tcsweekly = stock_info.get_data("TCS.NS", interval="1wk")
+        tcsweekly=tcsweekly.dropna()
+        values = tcsweekly['close'].values
+        data_len = math.ceil(len(values)*0.8) 
+        scaler = MinMaxScaler(feature_range=(0,1))
+        scaled_data = scaler.fit_transform(values.reshape(-1,1))
+        test_data = scaled_data[data_len-60: , : ]
+        x_test = []
+        for i in range(60, len(test_data)):
+            x_test.append(test_data[i-60:i, 0])
+        x_test = np.array(x_test)
+        x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+        new = joblib.load('tcsweekly_1.pkl')
+        ans = new.predict(x_test)
+        ans1 = scaler.inverse_transform(ans)
+        val = np.around(ans1[-1][0], decimals=2)
+        st.metric(label="Prediction", value=val, delta = round(val-x,2)) 
+        
+    if comp == 'Reliance Industries - RELIANCE':
+        x = round(stock_info.get_live_price("RELIANCE.NS"),2)
+        relweekly = stock_info.get_data("RELIANCE.NS", interval="1wk")
+        relweekly=relweekly.dropna()
+        values = relweekly['close'].values
+        data_len = math.ceil(len(values)*0.8) 
+        scaler = MinMaxScaler(feature_range=(0,1))
+        scaled_data = scaler.fit_transform(values.reshape(-1,1))
+        test_data = scaled_data[data_len-60: , : ]
+        x_test = []
+        for i in range(60, len(test_data)):
+            x_test.append(test_data[i-60:i, 0])
+        x_test = np.array(x_test)
+        x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+        new = joblib.load('relweekly_1.pkl')
+        ans = new.predict(x_test)
+        ans1 = scaler.inverse_transform(ans)
+        val = np.around(ans1[-1][0], decimals=2)
+        st.metric(label="Prediction", value=val, delta = round(val-x,2)) 
+        
+    if comp == 'Infosys - INFY':
+        x = round(stock_info.get_live_price("INFY.NS"),2)
+        infweekly = stock_info.get_data("INFY.NS", interval="1wk")
+        infweekly=infweekly.dropna()
+        values = infweekly['close'].values
+        data_len = math.ceil(len(values)*0.8) 
+        scaler = MinMaxScaler(feature_range=(0,1))
+        scaled_data = scaler.fit_transform(values.reshape(-1,1))
+        test_data = scaled_data[data_len-60: , : ]
+        x_test = []
+        for i in range(60, len(test_data)):
+            x_test.append(test_data[i-60:i, 0])
+        x_test = np.array(x_test)
+        x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
+        new = joblib.load('infweekly_1.pkl')
+        ans = new.predict(x_test)
+        ans1 = scaler.inverse_transform(ans)
+        val = np.around(ans1[-1][0], decimals=2)
+        st.metric(label="Prediction", value=val, delta = round(val-x,2))
+        
+        
 #Tab for Hist Data
 st.write("#")
 st.subheader('Financial data : ')
@@ -323,25 +387,5 @@ with a3:
         x = [50.49, 5.81, 11.64, 23.43, 8.63]
         fig = px.pie(values=x, names=tier)
         st.plotly_chart(fig, use_container_width=True, height=350)
-
-tcsweekly = stock_info.get_data("TCS.NS", interval="1wk")
-tcsweekly=tcsweekly.dropna()
-values = tcsweekly['close'].values
-data_len = math.ceil(len(values)*0.8) 
-scaler = MinMaxScaler(feature_range=(0,1))
-scaled_data = scaler.fit_transform(values.reshape(-1,1))
-test_data = scaled_data[data_len-60: , : ] #
-x_test = []
-for i in range(60, len(test_data)):
-    x_test.append(test_data[i-60:i, 0])
-x_test = np.array(x_test)
-x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-
-if st.button('Predict for Next Week'):   
-    new = joblib.load('tcsweekly_1.pkl')
-    ans = new.predict(x_test)
-    ans1 = scaler.inverse_transform(ans)
-    val = np.around(ans1[-1][0], decimals=2)
-    st.metric(label="Prediction", value=val)
 
 st.caption('The Web Application was made by Anand Soni and Deepak Rathore.')
