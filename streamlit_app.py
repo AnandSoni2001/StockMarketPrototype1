@@ -390,7 +390,7 @@ with a3:
         fig = px.pie(values=x, names=tier)
         st.plotly_chart(fig, use_container_width=True, height=350)
 
-title = st.text_input('Movie title', 'Life of Brian')
-st.write('The current movie title is', title)
+title = st.text_input('Enter your Name', '')
+st.write('Thank You ', title, ' ! Hope you liked our website')
 
 st.caption('The Web Application was made by Anand Soni and Deepak Rathore.')
